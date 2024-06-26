@@ -1,10 +1,10 @@
 pipeline
 {
     agent any
-    //tools
-   // {
-       // maven 'maven'
-    //}
+    tools
+    {
+       maven 'maven'
+    }
      stages
      {
           stage("checkout")
@@ -12,15 +12,16 @@ pipeline
               steps
               {
                   git 'https://github.com/spring-projects/spring-petclinic'
+                  echo "repo downloaded successfully"
               }
           }
-         // stage("mvn-package")
-         // {
-            //  steps
-             // {
-             // sh "mvn package"
+          stage("mvn-package")
+          {
+             steps
+              {
+              sh "mvn package"
 
-             // }
-        //  }
+              }
+         }
      }
 }
